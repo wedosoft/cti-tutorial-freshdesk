@@ -73,7 +73,7 @@ function hideMissedCall() {
  * It creates a ticket in Freshdesk for the call
  */
 async function createTicket() {
-  let callNotes = "Alice called Bob"
+  const callNotes = "Alice called Bob"
   const ticketDetails = {
     email: 'sample@email.com',
     subject: 'Call with the customer',
@@ -81,7 +81,6 @@ async function createTicket() {
     description: `Ticket from call. Call Notes:${callNotes}`,
     status: 2
   }
-  console.table(ticketDetails)
   try {
     const ticketData = await client.request.post('https://<%= iparam.freshdesk_domain %>/api/v2/tickets',
       {
@@ -137,7 +136,7 @@ function createContact() {
     },
     json: properties
   }
-  client.request.post(url, options).then(cotnact => {
+  client.request.post(url, options).then(contact => {
     console.info('Success: Created contact');
     console.info(contact.response);
   }, error => {
@@ -162,7 +161,20 @@ function getLoggedInUser() {
 }
 
 /**
- * To close the CTI app like minise option
+ * To open the CTI app
+ */
+function openApp() {
+  client.interface.trigger("show", { id: "softphone" })
+    .then(function () {
+      console.info('Success: Opened the app');
+    }).catch(function (error) {
+      console.error('Error: Failed to open the app');
+      console.error(error);
+    });
+}
+
+/**
+ * To close the CTI app
  */
 function closeApp() {
   client.interface.trigger("hide", { id: "softphone" }).then(function (data) {
@@ -178,17 +190,12 @@ function closeApp() {
  * To listen to click event for phone numbers in the Freshdesk pages and use the clicked phone number
  */
 function clickToCall() {
-  const textElement = document.getElementById('apptext');
+  const textElement = document.getElementById('appText');
 
   client.events.on("cti.triggerDialer", function (event) {
-    client.interface.trigger("show", { id: "softphone" })
-      .then(function () {
-        var data = event.helper.getData();
-        textElement.innerText = `Clicked phone number: ${data.number}`;
-      }).catch(function (error) {
-        console.error('Error: Failed to open the app');
-        console.error(error);
-      });
+    openApp();
+    var data = event.helper.getData();
+    textElement.innerText = `Clicked phone number: ${data.number}`;
   });
 }
 
