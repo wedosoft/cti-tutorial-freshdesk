@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  border: 0.5px solid blue;
 }
 
 *,
@@ -13,4 +14,8 @@ html {
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
+}
+
+.action-buttons {
+  margin-bottom: 10px;
 }

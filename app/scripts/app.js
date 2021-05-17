@@ -72,7 +72,7 @@ function hideMissedCall() {
 /**
  * It creates a ticket in Freshdesk for the call
  */
-function createTicket() {
+async function createTicket() {
   let callNotes = "Alice called Bob"
   const ticketDetails = {
     email: 'sample@email.com',
@@ -196,7 +196,7 @@ function clickToCall() {
  * To resize the height of the CTI app
  */
 function resizeApp() {
-  client.instance.resize({ height: '500px' });
+  client.instance.resize({ height: '450px' });
 }
 
 function onAppActivate() {
@@ -204,6 +204,8 @@ function onAppActivate() {
   const TICKET_ID = 12;
   const CONTACT_ID = 48012335223;
   const MISSED_CALLS = 11;
+
+  resizeApp();
 
   /* Adding event handlers for all the buttons in the UI of the app */
   document.getElementById('btnGetUser').addEventListener('fwClick', getLoggedInUser);
