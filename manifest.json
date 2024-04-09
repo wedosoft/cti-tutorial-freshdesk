@@ -1,13 +1,18 @@
 {
-  "platform-version": "2.0",
-  "product": {
-    "freshdesk": {
+  "platform-version": "3.0",
+  "modules": {
+    "common": {
       "location": {
         "cti_global_sidebar": {
           "url": "index.html",
           "icon": "styles/images/icon.svg"
         }
       }
-    }
+    },
+    "support_ticket": {}
+  },
+  "engines": {
+    "node": "18.18.2",
+    "fdk": "9.1.0"
   }
 }
