@@ -75,21 +75,18 @@ function hideMissedCall() {
 async function createTicket() {
   const callNotes = "Alice called Bob"
   const ticketDetails = {
-    email: 'sample@email.com',
-    subject: 'Call with the customer',
-    priority: 1,
-    description: `Ticket from call. Call Notes:${callNotes}`,
-    status: 2
-  }
+      email: 'sample@email.com',
+      subject: 'Call with the customer',
+      priority: 1,
+      description: `Ticket from call. Call Notes:${callNotes}`,
+      status: 2
+    };
   try {
-    const ticketData = await client.request.post('https://<%= iparam.freshdesk_subdomain %>.freshdesk.com/api/v2/tickets',
-      {
-        headers: {
-          Authorization: '<%= encode(iparam.freshdesk_api_key) %>'
-        },
-        json: ticketDetails,
-        method: "POST"
-      });
+    let ticketData = await client.request.invokeTemplate("createTicket", {
+      body: JSON.stringify(ticketDetails)
+    });
+    let responseJSON = JSON.parse(ticketData.response);
+    console.log(responseJSON);
     console.info('Successfully created ticket in Freshdesk');
     showNotify('success', 'Successfully created a ticket.');
   } catch (error) {
@@ -102,47 +99,56 @@ async function createTicket() {
 /**
  * It retrieves the list of contacts from Freshdesk
  */
-function getContacts() {
-  const url = 'https://<%= iparam.freshdesk_subdomain %>.freshdesk.com/api/v2/contacts';
-  const options = {
-    headers: {
-      Authorization: 'Basic <%= encode(iparam.freshdesk_api_key) %>'
-    }
-  }
-  client.request.get(url, options).then(contacts => {
-    console.info('Success: Got contacts list');
+async function getContacts() {
+  // const url = 'https://<%= iparam.freshdesk_subdomain %>.freshdesk.com/api/v2/contacts';
+  // const options = {
+  //   headers: {
+  //     Authorization: 'Basic <%= encode(iparam.freshdesk_api_key) %>'
+  //   }
+  // }
+  // client.request.get(url, options).then(contacts => {
+  //   console.info('Success: Got contacts list');
+  //   console.table(JSON.parse(contacts.response));
+  //   return JSON.parse(contacts.response);
+  // }, error => {
+  //   console.error('Error: Failed to get contacts from Freshdesk');
+  //   console.error(error);
+  //   return reject(error);
+  // });
+
+  try {
+    let contacts = await client.request.invokeTemplate("getContacts");
     console.table(JSON.parse(contacts.response));
     return JSON.parse(contacts.response);
-  }, error => {
+  } catch (error) {
+    console.error('Error: Failed to get contacts from Freshdesk');
     console.error(error);
-    return reject(error);
-  });
+    return error;
+  }
 }
 
 /**
  * It creates a contact in Freshdesk with the phone number
  */
-function createContact() {
+async function createContact() {
   const properties = {
     name: 'contact name',
     email: 'sample2@email.com',
     phone: '+0123456789',
 
   }
-  const url = 'https://<%= iparam.freshdesk_subdomain %>.freshdesk.com/api/v2/contacts';
-  const options = {
-    headers: {
-      Authorization: 'Basic <%= encode(iparam.freshdesk_api_key) %>'
-    },
-    json: properties
-  }
-  client.request.post(url, options).then(contact => {
-    console.info('Success: Created contact');
-    console.info(contact.response);
-  }, error => {
-    console.error('Error: Failed to create contact');
+
+  try {
+    let response = await client.request.invokeTemplate("createTicket", {
+      body: JSON.stringify(properties)
+    });
+    console.table(JSON.parse(response.response));
+    return JSON.parse(response.response);
+  } catch (error) {
+    console.error('Error: Failed to create a contact in Freshdesk');
     console.error(error);
-  });
+    return error;
+  }
 }
 
 /**

@@ -1,7 +1,12 @@
 {
-  "platform-version": "2.0",
-  "product": {
-    "freshdesk": {
+  "platform-version": "2.3",
+  "modules": {
+    "common": {
+      "requests": {
+        "createTicket": {}
+      }
+    },
+    "support_ticket": {
       "location": {
         "cti_global_sidebar": {
           "url": "index.html",
@@ -9,8 +14,5 @@
         }
       }
     }
-  },
-  "whitelisted-domains": [
-    "https://<%= iparam.freshdesk_domain %>"
-  ]
+  }
 }
