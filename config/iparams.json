@@ -1,0 +1,15 @@
+{
+  "freshdesk_subdomain": {
+    "display_name": "Freshdesk Subdomain",
+    "type": "text",
+    "description": "Your Freshdesk subdomain without .freshdesk.com suffix",
+    "required": true
+  },
+  "freshdesk_api_key": {
+    "display_name": "Freshdesk API Key",
+    "type": "text",
+    "description": "Your Freshdesk API key.",
+    "required": true,
+    "secure": true
+  }
+}

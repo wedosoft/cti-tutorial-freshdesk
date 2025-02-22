@@ -1,0 +1,31 @@
+
+      --------------------------------------
+      Error Stack:: "AxiosError: Request failed with status code 401\n    at Le (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:167630)\n    at IncomingMessage.<anonymous> (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:179500)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1698:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)"
+      Error Message:: "Request failed with status code 401"
+      Error Name:: "AxiosError"
+      Request ID:: ca6721d8-51a3-47e4-860b-21838027b579
+      
+      Env:: release
+      API Route:: /api/v1/copilot/migration_scope
+      API Response Message:: Invalid token
+      API Response Error Type:: unauthorized
+
+      Timestamp:: Sat, 22 Feb 2025 11:36:04 GMT
+      Extension Version:: 2.3.0
+      --------------------------------------
+    
+      --------------------------------------
+      Error Stack:: "Error: Could not find node version 18\n    at a.FdkHelper.checkfdkPath (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:81727)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at a.FdkHelper.getfdkPathFromConfig (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:81416)\n    at a.FdkHelper.runInBackground (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:82381)\n    at a.FdkHelper.getFdkVersion (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:78196)\n    at m.getFdkVersion (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:139504)\n    at m.resolveWebviewView (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.3.0/dist/extension.js:2:119610)\n    at pz.$resolveWebviewView (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:172:24585)"
+      Error Message:: "Could not find node version 18"
+      Error Name:: "Error"
+      
+      
+      
+      
+      
+      
+
+      Timestamp:: Sat, 22 Feb 2025 11:36:04 GMT
+      Extension Version:: 2.3.0
+      --------------------------------------
+    
