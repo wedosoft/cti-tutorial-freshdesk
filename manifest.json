@@ -1,21 +1,24 @@
 {
   "platform-version": "3.0",
   "modules": {
-      "common": {
-          "location": {
-              "cti_global_sidebar": {
-                  "url": "index.html",
-                  "icon": "styles/images/icon.svg"
-              }
-          },
-          "requests": {
-              "createTicket": {}
-          }
+    "common": {
+      "location": {
+        "cti_global_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
       },
-      "support_ticket": {}
+      "requests": {
+        "createTicket": {}
+      }
+    },
+    "support_ticket": {}
   },
   "engines": {
-      "node": "18.18.2",
-      "fdk": "9.3.1"
+    "node": "18.18.2",
+    "fdk": "9.3.1"
+  },
+  "app": {
+    "tracking_id": "6gv5svs69grusqehf3e5"
   }
 }
